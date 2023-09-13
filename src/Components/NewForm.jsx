@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Form from '../Reusable/Form';
 
 const NewForm = () => {
     const [user, setUser] = useState({
@@ -10,9 +11,9 @@ const NewForm = () => {
             pincode: '',
         },
         permanentAddress: {
-            p_state: '',
-            p_city: '',
-            p_pincode: '',
+            state: '',
+            city: '',
+            pincode: '',
         }
     });
 
@@ -27,11 +28,7 @@ const NewForm = () => {
                 currentAddress: {
                     ...data.currentAddress,
                     [name]: value
-                }
-            };
-        } else if (name === 'p_state' || name === 'p_city' || name === 'p_pincode') {
-            data = {
-                ...data,
+                },
                 permanentAddress: {
                     ...data.permanentAddress,
                     [name]: value
@@ -43,9 +40,10 @@ const NewForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let mainObj = {}
-        mainObj.personalDetails = user;
-        console.log(mainObj);
+        const dataToSend = {
+            personalDetails: user,
+        };
+        console.log(dataToSend);
     };
 
     const userInputList = [
@@ -111,12 +109,7 @@ const NewForm = () => {
         <div>
             <h1>Form</h1>
             <form onSubmit={handleSubmit}>
-                {userInputList.map((element, index) => (
-                    <div key={index}>
-                        <label>{element.label}</label>
-                        <input {...element} onChange={handleChange} />
-                    </div>
-                ))}
+                <Form handleChange={handleChange} inputList={userInputList} />
                 <button type="submit">Submit</button>
             </form>
         </div>

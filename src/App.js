@@ -1,14 +1,14 @@
 // import Form from './Components/Form';
 import React from "react";
 import NewForm from "./Components/NewForm";
-// import ThirdForm from "./Components/ThirdForm";
+import DynamicForm from "./Components/DynamicForm";
 
 const App = () => {
   return (
     <div>
       {/* <Form /> */}
-      <NewForm />
-      {/* <ThirdForm /> */}
+      {/* <NewForm /> */}
+      <DynamicForm />
     </div>
   );
 };
